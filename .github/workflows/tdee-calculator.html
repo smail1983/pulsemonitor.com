@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TDEE Calculator – Calculate Your Daily Calorie Needs | FitCalcHub</title>
+<meta name="description" content="Use our free TDEE calculator to estimate how many calories you burn per day based on your age, height, weight, gender, and activity level.">
+<link rel="canonical" href="https://www.fitcalchub.com/tdee-calculator.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo"><svg class="mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="30" height="30" rx="8" fill="#0E9B6C"/>
+<path d="M6 16h4l2.2-6 3.6 12 2.4-9 1.6 3H24" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>FitCalcHub</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+<a href="calculators.html">Calculators</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-right">
+      <a href="calculators.html" class="btn btn-primary">Explore Calculators</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-nav">
+    <a href="index.html">Home</a>
+<a href="calculators.html">Calculators</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+    <a href="calculators.html" class="btn btn-primary">Explore Calculators</a>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / <a href="calculators.html">Calculators</a> / TDEE Calculator</div>
+    <h1>TDEE Calculator</h1>
+    <p class="lede">Calculate how many calories you burn per day based on your age, gender, height, weight, and activity level.</p>
+  </div>
+</section>
+
+<section class="section calc-shell">
+  <div class="container">
+    <form class="calc-panel" id="tdee-form" novalidate>
+      <div class="field-row">
+        <div class="field" id="tdee-gender-field">
+          <label for="tdee-gender">Gender</label>
+          <select id="tdee-gender">
+            <option value="">Select gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+          <span class="error-msg"></span>
+        </div>
+        <div class="field" id="tdee-age-field">
+          <label for="tdee-age">Age</label>
+          <input type="number" id="tdee-age" min="14" max="100" placeholder="e.g. 28">
+          <span class="error-msg"></span>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field" id="tdee-weight-field">
+          <label>Weight</label>
+          <div class="unit-field">
+            <input type="number" id="tdee-weight" min="1" placeholder="e.g. 70">
+            <div class="seg" id="tdee-weight-unit">
+              <button type="button" class="active" data-value="kg">kg</button>
+              <button type="button" data-value="lb">lb</button>
+            </div>
+          </div>
+          <span class="error-msg"></span>
+        </div>
+        <div class="field" id="tdee-height-field">
+          <label>Height</label>
+          <div class="unit-field" id="tdee-height-cm-wrap">
+            <input type="number" id="tdee-height-cm" min="1" placeholder="e.g. 175">
+          </div>
+          <div class="dual-input" id="tdee-height-ft-wrap" style="display:none">
+            <input type="number" id="tdee-height-ft" min="0" placeholder="ft">
+            <input type="number" id="tdee-height-in" min="0" placeholder="in">
+          </div>
+          <div class="seg" id="tdee-height-unit">
+            <button type="button" class="active" data-value="cm">cm</button>
+            <button type="button" data-value="ft">ft/in</button>
+          </div>
+          <span class="error-msg"></span>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field" style="grid-column: 1 / -1;">
+          <label for="tdee-activity">Activity Level</label>
+          <select id="tdee-activity">
+            <option value="1.2">Sedentary &mdash; Little or no exercise</option>
+            <option value="1.375">Lightly Active &mdash; Exercise 1&ndash;3 days per week</option>
+            <option value="1.55" selected>Moderately Active &mdash; Exercise 3&ndash;5 days per week</option>
+            <option value="1.725">Very Active &mdash; Exercise 6&ndash;7 days per week</option>
+            <option value="1.9">Extra Active &mdash; Very intense exercise or physical job</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Calculate TDEE</button>
+      </div>
+    </form>
+
+    <div class="result-card" id="tdee-result">
+      <div class="result-label">Your Estimated TDEE</div>
+      <div class="result-main" id="tdee-value">&mdash;</div>
+      <div class="result-sub">
+        <div><span class="v" id="bmr-value">&mdash;</span><span class="l">Estimated BMR</span></div>
+      </div>
+    </div>
+
+    <div class="goal-grid" id="tdee-goals" style="display:none">
+      <div class="goal-card"><div class="goal-title">Weight Loss</div><div class="goal-value" id="goal-loss">&mdash;</div><div class="goal-desc">TDEE &minus; 500 calories/day</div></div>
+      <div class="goal-card"><div class="goal-title">Maintain Weight</div><div class="goal-value" id="goal-maintain">&mdash;</div><div class="goal-desc">TDEE calories/day</div></div>
+      <div class="goal-card"><div class="goal-title">Weight Gain</div><div class="goal-value" id="goal-gain">&mdash;</div><div class="goal-desc">TDEE + 500 calories/day</div></div>
+    </div>
+    <p class="result-note" id="tdee-note" style="display:none">These numbers are estimates and individual calorie needs may vary.</p>
+  </div>
+</section>
+
+<section class="section prose-section">
+  <div class="container">
+    <div class="prose-grid">
+      <h2>What Is TDEE?</h2>
+      <p>TDEE, or Total Daily Energy Expenditure, is the approximate number of calories your body burns in a full day. It combines the energy your body uses just to stay alive with the extra calories burned through movement, exercise, and daily activity. Knowing your TDEE gives you a starting point for setting calorie goals, whether you want to maintain, lose, or gain weight.</p>
+
+      <h2>How Is TDEE Calculated?</h2>
+      <p>TDEE is built from two pieces: your Basal Metabolic Rate (BMR) and your activity level.</p>
+      <h3>Basal Metabolic Rate</h3>
+      <p>BMR is the number of calories your body needs at complete rest to keep basic functions running, such as breathing and circulation.</p>
+      <h3>Physical Activity and the Activity Multiplier</h3>
+      <p>Everything beyond rest &mdash; walking, exercise, work, daily movement &mdash; adds to your calorie needs. This calculator applies an activity multiplier to your BMR based on how active you are.</p>
+      <h3>The Mifflin-St Jeor Formula</h3>
+      <p>This calculator uses the Mifflin-St Jeor equation, one of the most widely used formulas for estimating BMR from age, gender, height, and weight, then multiplies the result by your activity factor to estimate TDEE.</p>
+
+      <h2>TDEE vs BMR</h2>
+      <p>BMR represents the calories your body burns at rest. TDEE builds on that number by adding the calories burned through daily activity and exercise. In short, BMR is your baseline, and TDEE is your full-day total.</p>
+
+      <h2>How to Use Your TDEE</h2>
+      <h3>For Weight Maintenance</h3>
+      <p>Eating approximately around your TDEE may help maintain your current body weight over time.</p>
+      <h3>For Weight Loss</h3>
+      <p>A moderate calorie deficit below your TDEE may support gradual weight loss.</p>
+      <h3>For Weight Gain</h3>
+      <p>A controlled calorie surplus above your TDEE may support weight gain.</p>
+
+      <h2>Activity Level Guide</h2>
+      <table class="simple-table">
+        <thead><tr><th>Level</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>Sedentary</td><td>Little or no exercise</td></tr>
+          <tr><td>Lightly Active</td><td>Exercise 1&ndash;3 days per week</td></tr>
+          <tr><td>Moderately Active</td><td>Exercise 3&ndash;5 days per week</td></tr>
+          <tr><td>Very Active</td><td>Exercise 6&ndash;7 days per week</td></tr>
+          <tr><td>Extra Active</td><td>Very intense exercise or physical job</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item"><button class="faq-q">What does TDEE stand for?<span class="plus"></span></button><div class="faq-a"><p>TDEE stands for Total Daily Energy Expenditure &mdash; the estimated number of calories your body uses in a full day, including rest and activity.</p></div></div>
+        <div class="faq-item"><button class="faq-q">How accurate is a TDEE calculator?<span class="plus"></span></button><div class="faq-a"><p>It gives a reasonable estimate based on population averages, but actual needs vary by individual and can differ from the estimate.</p></div></div>
+        <div class="faq-item"><button class="faq-q">Is TDEE the same as BMR?<span class="plus"></span></button><div class="faq-a"><p>No. BMR is calories burned at rest; TDEE adds your daily activity on top of BMR.</p></div></div>
+        <div class="faq-item"><button class="faq-q">How often should I recalculate my TDEE?<span class="plus"></span></button><div class="faq-a"><p>Many people recalculate every 4 to 8 weeks, or whenever weight or activity level changes noticeably.</p></div></div>
+        <div class="faq-item"><button class="faq-q">Can I use TDEE for weight loss?<span class="plus"></span></button><div class="faq-a"><p>Many people use TDEE as a starting point and eat somewhat below it to create a calorie deficit.</p></div></div>
+        <div class="faq-item"><button class="faq-q">Does TDEE change as I lose weight?<span class="plus"></span></button><div class="faq-a"><p>Yes. As body weight decreases, TDEE typically decreases too, so it helps to recalculate periodically.</p></div></div>
+      </div>
+
+      <h3>Related Calculators</h3>
+      <div class="internal-links">
+        <a href="bmi-calculator.html">BMI Calculator</a>
+        <a href="body-fat-calculator.html">Body Fat Calculator</a>
+        <a href="meal-calorie-calculator.html">Meal Calorie Calculator</a>
+      </div>
+
+      <div class="disclaimer" style="margin-top:32px">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16.5" x2="12" y2="16.5"/></svg>
+        <p>FitCalcHub calculators provide estimates for educational purposes only. They are not intended to diagnose, treat, or replace professional medical advice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What does TDEE stand for?", "acceptedAnswer": {"@type": "Answer", "text": "TDEE stands for Total Daily Energy Expenditure, the estimated number of calories your body uses in a full day, including rest and activity."}},
+    {"@type": "Question", "name": "How accurate is a TDEE calculator?", "acceptedAnswer": {"@type": "Answer", "text": "A TDEE calculator gives a reasonable estimate based on population averages, but actual calorie needs vary by individual and can differ from the estimate by several hundred calories."}},
+    {"@type": "Question", "name": "Is TDEE the same as BMR?", "acceptedAnswer": {"@type": "Answer", "text": "No. BMR is the calories your body burns at rest, while TDEE adds your daily activity on top of BMR."}},
+    {"@type": "Question", "name": "How often should I recalculate my TDEE?", "acceptedAnswer": {"@type": "Answer", "text": "It's common to recalculate every 4 to 8 weeks, or whenever your weight or activity level changes noticeably."}},
+    {"@type": "Question", "name": "Can I use TDEE for weight loss?", "acceptedAnswer": {"@type": "Answer", "text": "Many people use their TDEE as a starting point and eat somewhat below it to create a calorie deficit for gradual weight loss."}},
+    {"@type": "Question", "name": "Does TDEE change as I lose weight?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. As body weight decreases, TDEE typically decreases too, so it's helpful to recalculate periodically."}}
+  ]
+}
+</script>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="logo">FitCalcHub</a>
+        <p>Free calculators and educational resources to help you better understand your health and fitness numbers.</p>
+      </div>
+      <div>
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="tdee-calculator.html">TDEE Calculator</a></li>
+          <li><a href="bmi-calculator.html">BMI Calculator</a></li>
+          <li><a href="body-fat-calculator.html">Body Fat Calculator</a></li>
+          <li><a href="meal-calorie-calculator.html">Meal Calorie Calculator</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Use</a></li>
+          <li><a href="medical-disclaimer.html">Medical Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 FitCalcHub. All rights reserved.</span>
+      <span>Estimates only &mdash; not medical advice.</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/main.js"></script>
+</body>
+</html>
