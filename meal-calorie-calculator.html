@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meal Calorie Calculator – Calculate Calories & Macros | FitCalcHub</title>
+<meta name="description" content="Calculate the total calories, protein, carbohydrates and fat in your meal with our free meal calorie calculator.">
+<link rel="canonical" href="https://www.fitcalchub.com/meal-calorie-calculator.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo"><svg class="mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="30" height="30" rx="8" fill="#0E9B6C"/>
+<path d="M6 16h4l2.2-6 3.6 12 2.4-9 1.6 3H24" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>FitCalcHub</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+<a href="calculators.html">Calculators</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-right">
+      <a href="calculators.html" class="btn btn-primary">Explore Calculators</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-nav">
+    <a href="index.html">Home</a>
+<a href="calculators.html">Calculators</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+    <a href="calculators.html" class="btn btn-primary">Explore Calculators</a>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / <a href="calculators.html">Calculators</a> / Meal Calorie Calculator</div>
+    <h1>Meal Calorie Calculator</h1>
+    <p class="lede">Quickly estimate the total calories and macronutrients in your meal by adding each food item.</p>
+  </div>
+</section>
+
+<section class="section calc-shell">
+  <div class="container">
+    <div class="calc-panel" style="max-width:900px">
+      <table class="meal-table" id="meal-table">
+        <thead>
+          <tr><th>Food</th><th>Qty</th><th>Calories</th><th>Protein (g)</th><th>Carbs (g)</th><th>Fat (g)</th><th></th></tr>
+        </thead>
+        <tbody id="meal-tbody"></tbody>
+      </table>
+      <div class="meal-actions">
+        <button type="button" class="btn btn-secondary" id="meal-add-btn">+ Add Food</button>
+        <button type="button" class="btn btn-secondary" id="meal-reset-btn">Reset Meal</button>
+      </div>
+
+      <div class="meal-totals result-card show" style="background:var(--ink)">
+        <div class="result-label">Meal Totals</div>
+        <div class="result-main" id="meal-total-cal">0 kcal</div>
+        <div class="result-sub">
+          <div><span class="v" id="meal-total-protein">0 g</span><span class="l">Protein</span></div>
+          <div><span class="v" id="meal-total-carbs">0 g</span><span class="l">Carbohydrates</span></div>
+          <div><span class="v" id="meal-total-fat">0 g</span><span class="l">Fat</span></div>
+        </div>
+      </div>
+      <p class="result-note">Enter nutrition values from a food label or another reliable source &mdash; totals update automatically as you type.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section prose-section">
+  <div class="container">
+    <div class="prose-grid">
+      <h2>How to Calculate Calories in a Meal</h2>
+      <p>Add every food or drink in your meal as a separate row, along with its calories and macronutrients per serving. Adjust the quantity for how many servings you had, and the totals update automatically.</p>
+
+      <h2>Understanding Calories and Macronutrients</h2>
+      <p>Calories measure the energy in food. Protein, carbohydrates, and fat &mdash; the three macronutrients &mdash; each contribute calories in different amounts, and tracking them alongside total calories can give a fuller picture of a meal.</p>
+
+      <h2>Why Serving Size Matters</h2>
+      <p>Nutrition information on labels is usually listed per serving, not per package. Adjusting the quantity field to match how much you actually ate helps keep your totals accurate.</p>
+
+      <h2>How to Read a Nutrition Label</h2>
+      <p>Most nutrition labels list calories and macronutrients per serving near the top, with the serving size stated just above. Check the serving size first, then match your portion to it before entering values here.</p>
+
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item"><button class="faq-q">How do I calculate total calories in a meal?<span class="plus"></span></button><div class="faq-a"><p>Add each food item with its calories and macros, and the calculator totals them automatically based on quantity.</p></div></div>
+        <div class="faq-item"><button class="faq-q">What are macronutrients?<span class="plus"></span></button><div class="faq-a"><p>Protein, carbohydrates, and fat &mdash; the three nutrients that provide calories in food.</p></div></div>
+        <div class="faq-item"><button class="faq-q">Where can I find calories for a food?<span class="plus"></span></button><div class="faq-a"><p>Nutrition labels on packaged food, or official nutrition information from a manufacturer or restaurant, are common sources.</p></div></div>
+        <div class="faq-item"><button class="faq-q">Does cooking change calorie content?<span class="plus"></span></button><div class="faq-a"><p>Cooking methods that add ingredients such as oil or butter can increase a meal's total calories, though cooking itself doesn't change the calories in the original food.</p></div></div>
+      </div>
+
+      <h3>Related Calculators</h3>
+      <div class="internal-links">
+        <a href="tdee-calculator.html">TDEE Calculator</a>
+        <a href="bmi-calculator.html">BMI Calculator</a>
+        <a href="body-fat-calculator.html">Body Fat Calculator</a>
+      </div>
+
+      <div class="disclaimer" style="margin-top:32px">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16.5" x2="12" y2="16.5"/></svg>
+        <p>FitCalcHub calculators provide estimates for educational purposes only. They are not intended to diagnose, treat, or replace professional medical advice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "How do I calculate total calories in a meal?", "acceptedAnswer": {"@type": "Answer", "text": "Add each food item you ate along with its calories and macronutrients, and the calculator will total them automatically based on quantity."}},
+    {"@type": "Question", "name": "What are macronutrients?", "acceptedAnswer": {"@type": "Answer", "text": "Macronutrients are protein, carbohydrates, and fat, the three nutrients that provide calories in food."}},
+    {"@type": "Question", "name": "Where can I find calories for a food?", "acceptedAnswer": {"@type": "Answer", "text": "Nutrition labels on packaged food, or a food's official nutrition information from the manufacturer or restaurant, are common sources."}},
+    {"@type": "Question", "name": "Does cooking change calorie content?", "acceptedAnswer": {"@type": "Answer", "text": "Cooking methods that add ingredients such as oil or butter can increase the total calories of a meal, even though the cooking process itself doesn't change the calories in the original food."}}
+  ]
+}
+</script>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="logo">FitCalcHub</a>
+        <p>Free calculators and educational resources to help you better understand your health and fitness numbers.</p>
+      </div>
+      <div>
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="tdee-calculator.html">TDEE Calculator</a></li>
+          <li><a href="bmi-calculator.html">BMI Calculator</a></li>
+          <li><a href="body-fat-calculator.html">Body Fat Calculator</a></li>
+          <li><a href="meal-calorie-calculator.html">Meal Calorie Calculator</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Use</a></li>
+          <li><a href="medical-disclaimer.html">Medical Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 FitCalcHub. All rights reserved.</span>
+      <span>Estimates only &mdash; not medical advice.</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/main.js"></script>
+</body>
+</html>

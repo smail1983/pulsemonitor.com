@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Body Fat Calculator – Estimate Your Body Fat % | FitCalcHub</title>
+<meta name="description" content="Use our free body fat calculator to estimate your body fat percentage using the U.S. Navy tape-measure method.">
+<link rel="canonical" href="https://www.fitcalchub.com/body-fat-calculator.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo"><svg class="mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="30" height="30" rx="8" fill="#0E9B6C"/>
+<path d="M6 16h4l2.2-6 3.6 12 2.4-9 1.6 3H24" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>FitCalcHub</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+<a href="calculators.html">Calculators</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-right">
+      <a href="calculators.html" class="btn btn-primary">Explore Calculators</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-nav">
+    <a href="index.html">Home</a>
+<a href="calculators.html">Calculators</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+    <a href="calculators.html" class="btn btn-primary">Explore Calculators</a>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / <a href="calculators.html">Calculators</a> / Body Fat Calculator</div>
+    <h1>Body Fat Calculator</h1>
+    <p class="lede">Estimate your body fat percentage using the U.S. Navy tape-measure method &mdash; just a few body measurements are needed.</p>
+  </div>
+</section>
+
+<section class="section calc-shell">
+  <div class="container">
+    <form class="calc-panel" id="bf-form" novalidate>
+      <div class="field-row">
+        <div class="field">
+          <label>Gender</label>
+          <div class="seg" id="bf-gender">
+            <button type="button" class="active" data-value="male">Male</button>
+            <button type="button" data-value="female">Female</button>
+          </div>
+        </div>
+        <div class="field">
+          <label>Measurement Units</label>
+          <div class="seg" id="bf-unit">
+            <button type="button" class="active" data-value="cm">cm</button>
+            <button type="button" data-value="in">inches</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field" id="bf-height-field">
+          <label>Height</label>
+          <div class="unit-field" id="bf-height-cm-wrap">
+            <input type="number" id="bf-height-cm" min="1" placeholder="e.g. 175">
+          </div>
+          <div class="dual-input" id="bf-height-ft-wrap" style="display:none">
+            <input type="number" id="bf-height-ft" min="0" placeholder="ft">
+            <input type="number" id="bf-height-in" min="0" placeholder="in">
+          </div>
+          <div class="seg" id="bf-height-unit">
+            <button type="button" class="active" data-value="cm">cm</button>
+            <button type="button" data-value="ft">ft/in</button>
+          </div>
+          <span class="error-msg"></span>
+        </div>
+        <div class="field" id="bf-neck-field">
+          <label for="bf-neck">Neck</label>
+          <input type="number" id="bf-neck" min="1" placeholder="e.g. 38">
+          <span class="hint">Measured just below the larynx</span>
+          <span class="error-msg"></span>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field" id="bf-waist-field">
+          <label for="bf-waist">Waist</label>
+          <input type="number" id="bf-waist" min="1" placeholder="e.g. 85">
+          <span class="hint">Measured at the narrowest point</span>
+          <span class="error-msg"></span>
+        </div>
+        <div class="field" id="bf-hip-field" style="display:none">
+          <label for="bf-hip">Hip</label>
+          <input type="number" id="bf-hip" min="1" placeholder="e.g. 98">
+          <span class="hint">Measured at the widest point (women only)</span>
+          <span class="error-msg"></span>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Calculate Body Fat</button>
+      </div>
+    </form>
+
+    <div class="result-card" id="bf-result">
+      <div class="result-label">Your Estimated Body Fat</div>
+      <div class="result-main" id="bf-value">&mdash;</div>
+      <span class="category-pill" id="bf-category">&mdash;</span>
+    </div>
+    <p class="result-note">This is an estimate based on the U.S. Navy method and individual results may vary.</p>
+  </div>
+</section>
+
+<section class="section prose-section">
+  <div class="container">
+    <div class="prose-grid">
+      <h2>What Is Body Fat Percentage?</h2>
+      <p>Body fat percentage is the proportion of your total body weight that comes from fat, as opposed to muscle, bone, organs, and water. Unlike BMI, it gives a more direct sense of body composition.</p>
+
+      <h2>How Is Body Fat Calculated Here?</h2>
+      <p>This calculator uses the U.S. Navy circumference method, which estimates body fat from your height, neck, and waist measurements (plus hip measurement for women). It's a widely used field method that doesn't require special equipment.</p>
+
+      <h2>How to Measure Correctly</h2>
+      <p>Use a flexible tape measure and keep it snug but not tight against the skin. Measure your neck just below the larynx, your waist at the narrowest point (or at the navel if there is no natural narrowing), and, for women, your hips at the widest point.</p>
+
+      <h2>Body Fat Categories</h2>
+      <table class="simple-table">
+        <thead><tr><th>Category</th><th>Men</th><th>Women</th></tr></thead>
+        <tbody>
+          <tr><td>Essential Fat</td><td>2&ndash;5%</td><td>10&ndash;13%</td></tr>
+          <tr><td>Athletic</td><td>6&ndash;13%</td><td>14&ndash;20%</td></tr>
+          <tr><td>Fit</td><td>14&ndash;17%</td><td>21&ndash;24%</td></tr>
+          <tr><td>Average</td><td>18&ndash;24%</td><td>25&ndash;31%</td></tr>
+          <tr><td>Above Average</td><td>25%+</td><td>32%+</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Limitations</h2>
+      <p>The circumference method is an estimate, not a direct measurement. Clinical methods such as DEXA scans or hydrostatic weighing are more precise but require specialized equipment. Measurement technique also affects accuracy, so try to measure consistently each time.</p>
+
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item"><button class="faq-q">How accurate is the U.S. Navy body fat method?<span class="plus"></span></button><div class="faq-a"><p>It's a reasonably reliable estimate for most people when measurements are taken carefully, though less precise than clinical methods like DEXA scans.</p></div></div>
+        <div class="faq-item"><button class="faq-q">What measurements do I need?<span class="plus"></span></button><div class="faq-a"><p>Height, neck, and waist. Women also need a hip measurement.</p></div></div>
+        <div class="faq-item"><button class="faq-q">Where do I measure my waist and neck?<span class="plus"></span></button><div class="faq-a"><p>Neck just below the larynx, and waist at the narrowest point, or at the navel if there's no natural narrowing.</p></div></div>
+        <div class="faq-item"><button class="faq-q">Is body fat percentage better than BMI?<span class="plus"></span></button><div class="faq-a"><p>It gives more insight into body composition than BMI since it distinguishes fat mass from lean mass, though it still relies on estimation.</p></div></div>
+        <div class="faq-item"><button class="faq-q">What is a healthy body fat percentage?<span class="plus"></span></button><div class="faq-a"><p>Healthy ranges vary by age and sex, but many references consider roughly 14&ndash;25% typical for men and 21&ndash;32% typical for women.</p></div></div>
+      </div>
+
+      <h3>Related Calculators</h3>
+      <div class="internal-links">
+        <a href="tdee-calculator.html">TDEE Calculator</a>
+        <a href="bmi-calculator.html">BMI Calculator</a>
+        <a href="meal-calorie-calculator.html">Meal Calorie Calculator</a>
+      </div>
+
+      <div class="disclaimer" style="margin-top:32px">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16.5" x2="12" y2="16.5"/></svg>
+        <p>FitCalcHub calculators provide estimates for educational purposes only. They are not intended to diagnose, treat, or replace professional medical advice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "How accurate is the U.S. Navy body fat method?", "acceptedAnswer": {"@type": "Answer", "text": "The U.S. Navy method is a reasonably reliable estimate for most people when measurements are taken carefully, though it is less precise than clinical methods like DEXA scans."}},
+    {"@type": "Question", "name": "What measurements do I need?", "acceptedAnswer": {"@type": "Answer", "text": "You need your height, neck, and waist measurements. Women also need a hip measurement."}},
+    {"@type": "Question", "name": "Where do I measure my waist and neck?", "acceptedAnswer": {"@type": "Answer", "text": "Measure your neck just below the larynx, and your waist at the narrowest point, or at the navel if there is no natural narrowing."}},
+    {"@type": "Question", "name": "Is body fat percentage better than BMI?", "acceptedAnswer": {"@type": "Answer", "text": "Body fat percentage gives more insight into body composition than BMI, since it distinguishes fat mass from lean mass, though it still relies on estimation rather than direct measurement."}},
+    {"@type": "Question", "name": "What is a healthy body fat percentage?", "acceptedAnswer": {"@type": "Answer", "text": "Healthy ranges vary by age and sex, but many references consider roughly 14 to 25 percent typical for men and 21 to 32 percent typical for women."}}
+  ]
+}
+</script>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="logo">FitCalcHub</a>
+        <p>Free calculators and educational resources to help you better understand your health and fitness numbers.</p>
+      </div>
+      <div>
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="tdee-calculator.html">TDEE Calculator</a></li>
+          <li><a href="bmi-calculator.html">BMI Calculator</a></li>
+          <li><a href="body-fat-calculator.html">Body Fat Calculator</a></li>
+          <li><a href="meal-calorie-calculator.html">Meal Calorie Calculator</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Use</a></li>
+          <li><a href="medical-disclaimer.html">Medical Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 FitCalcHub. All rights reserved.</span>
+      <span>Estimates only &mdash; not medical advice.</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/main.js"></script>
+</body>
+</html>
